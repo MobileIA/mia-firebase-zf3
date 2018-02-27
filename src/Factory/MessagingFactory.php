@@ -21,6 +21,6 @@ class MessagingFactory implements \Zend\ServiceManager\Factory\FactoryInterface
             $apiKey = $config['mia_firebase']['api_key'];
         }
         // Creamos objeto
-        return new Messaging($apiKey);
+        return new \MIAFirebase\Messaging($apiKey);
     }
 }
