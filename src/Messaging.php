@@ -53,6 +53,29 @@ class Messaging
         return $response;
     }
     /**
+     * Funcion que se encarga de enviar una notificacion a un topico
+     * @param array $topic
+     * @param int $pushType
+     * @param array $data
+     * @return boolean
+     */
+    public function sendToTopicWithNotification($topic, $pushType, $data = array(), $title = '', $body = '')
+    {
+        // Agregamos el type a los datos
+        $data['push_type'] = $pushType;
+        // Creamos la peticion con los parametros necesarios
+        $request = $this->generateRequest(array(
+            'to' => '/topics/'.$topic,
+            'data' => $data,
+            'title' => $title,
+            'body' => $body
+        ));
+        // Ejecutamos la petición
+        $response = $this->dispatchRequest($request);
+        
+        return $response;
+    }
+    /**
      * Funcion que se encarga de enviar una notificacion a los dispositivos elegidos
      * @param array $tokens
      * @param int $pushType
@@ -71,6 +94,33 @@ class Messaging
         $request = $this->generateRequest(array(
             'registration_ids' => $tokens,
             'data' => $data
+        ));
+        // Ejecutamos la petición
+        $response = $this->dispatchRequest($request);
+
+        return $response;
+    }
+    /**
+     * Funcion que se encarga de enviar una notificacion a los dispositivos elegidos
+     * @param array $tokens
+     * @param int $pushType
+     * @param array $data
+     * @return boolean
+     */
+    public function sendToDevicesWithNotification($tokens, $pushType, $data = array(), $title = '', $body = '')
+    {
+        // Verificar si se enviaron tokens
+        if(count($tokens) == 0){
+            return false;
+        }
+        // Agregamos el type a los datos
+        $data['push_type'] = $pushType;
+        // Creamos la peticion con los parametros necesarios
+        $request = $this->generateRequest(array(
+            'registration_ids' => $tokens,
+            'data' => $data,
+            'title' => $title,
+            'body' => $body
         ));
         // Ejecutamos la petición
         $response = $this->dispatchRequest($request);
