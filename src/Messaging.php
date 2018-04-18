@@ -67,8 +67,10 @@ class Messaging
         $request = $this->generateRequest(array(
             'to' => '/topics/'.$topic,
             'data' => $data,
-            'title' => $title,
-            'body' => $body
+            'notification' => array(
+                'title' => $title,
+                'body' => $body
+            )
         ));
         // Ejecutamos la petición
         $response = $this->dispatchRequest($request);
@@ -119,8 +121,10 @@ class Messaging
         $request = $this->generateRequest(array(
             'registration_ids' => $tokens,
             'data' => $data,
-            'title' => $title,
-            'body' => $body
+            'notification' => array(
+                'title' => $title,
+                'body' => $body
+            )
         ));
         // Ejecutamos la petición
         $response = $this->dispatchRequest($request);
