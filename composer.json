@@ -1,7 +1,7 @@
 {
     "name": "mobileia/mia-firebase-zf3",
     "description": "The library for firebase.",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "minimum-stability": "stable",
     "license": "MIT",
     "authors": [

@@ -69,7 +69,8 @@ class Messaging
             'data' => $data,
             'notification' => array(
                 'title' => $title,
-                'body' => $body
+                'body' => $body,
+                'click_action' => 'FLUTTER_NOTIFICATION_CLICK'
             )
         ));
         // Ejecutamos la petición
@@ -123,7 +124,8 @@ class Messaging
             'data' => $data,
             'notification' => array(
                 'title' => $title,
-                'body' => $body
+                'body' => $body,
+                'click_action' => 'FLUTTER_NOTIFICATION_CLICK'
             )
         ));
         // Ejecutamos la petición
